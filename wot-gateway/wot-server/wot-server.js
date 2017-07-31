@@ -49,20 +49,20 @@ var createServer = function (port, secure) {
 };
 
 function initPlugins() {
-  KannMotionPlugin = require('./plugins/internal/KannMotionPlugin').KannMotionPlugin;
-  KannMotionPlugin = new KannMotionPlugin();
-  KannMotionPlugin.start();
+  // KannMotionPlugin = require('./plugins/internal/KannMotionPlugin').KannMotionPlugin;
+  // KannMotionPlugin = new KannMotionPlugin();
+  // KannMotionPlugin.start();
 
-  // SaunaPlugin = require('./plugins/internal/SaunaPlugin').SaunaPlugin;
-  // SaunaPlugin = new SaunaPlugin();
-  // SaunaPlugin.start();
+  SaunaPlugin = require('./plugins/internal/SaunaPlugin').SaunaPlugin;
+  SaunaPlugin = new SaunaPlugin();
+  SaunaPlugin.start();
 }
 
 module.exports = createServer;
 
 process.on('SIGINT', function () {
-  KannMotionPlugin.stop();
-  // SaunaPlugin.stop();
+  // KannMotionPlugin.stop();
+  SaunaPlugin.stop();
   console.log('Bye, bye!');
   process.exit();
 });
